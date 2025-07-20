@@ -8,7 +8,7 @@ For more screenshots observe `./.screenshots` directory
 
 ## Features
 
-- Generate unique short links for any URL
+- Unique short links generation for any URL
 - Error handling for cases when URL is invalid or URL generation has failed
 - Simple responsive design
 
