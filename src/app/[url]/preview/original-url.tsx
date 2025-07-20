@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Url } from "@/database/schema";
 import { ExternalLink } from "lucide-react";
 import { FC } from "react";
@@ -25,12 +30,19 @@ export const OriginalUrl: FC<OriginalUrlProps> = ({ shortened }) => {
           readOnly
           className="flex-1 bg-muted text-sm"
         />
-        <Button size="icon" variant="outline" asChild className="shrink-0">
-          <a href={shortened.url} target="_blank">
-            <ExternalLink className="size-4" />
-            <span className="sr-only">Visit URL</span>
-          </a>
-        </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button size="icon" variant="outline" asChild className="shrink-0">
+              <a href={shortened.url} target="_blank">
+                <ExternalLink className="size-4" />
+                <span className="sr-only">Visit URL</span>
+              </a>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Visit URL</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
     </div>
   );

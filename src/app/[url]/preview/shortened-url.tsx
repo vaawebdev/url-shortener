@@ -3,6 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Url } from "@/database/schema";
 import { Copy } from "lucide-react";
 import { FC, useCallback, useMemo } from "react";
@@ -45,15 +50,23 @@ export const ShortenedUrl: FC<ShortenedUrlProps> = ({ shortened }) => {
           className="flex-1 bg-blue-50 border-blue-200 text-blue-700"
         />
         {state.noUserInteraction ? (
-          <Button
-            size="icon"
-            variant="outline"
-            type="button"
-            onClick={onCopy}
-            className="shrink-0 bg-transparent"
-          >
-            <Copy />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon"
+                variant="outline"
+                type="button"
+                onClick={onCopy}
+                className="shrink-0 bg-transparent"
+              >
+                <Copy />
+                <span className="sr-only">Copy to Clipboard</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Copy to Clipboard</p>
+            </TooltipContent>
+          </Tooltip>
         ) : null}
       </div>
     </div>
